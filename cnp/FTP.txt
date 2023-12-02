@@ -1,0 +1,9 @@
+1.Add 2911 Router and set IP Addresses for both Ethernet as 81.0.0.1 and 70.0.0.1
+2.Add 2 PCs and assign IP addresses as 81.0.0.2 and 81.0.0.3 respectively, also assign default gateway as 81.0.0.1 for both 
+3.Add server from end devices and assign default gateway as 70.0.0.1 and its IP as 70.0.0.2, then go to services then FTP services,In user setup create username and password, select all permissions and add user.
+4.Add 2950-24 switch, connect to both PCs using Copper Straight-Through cable. Connect 3rd port of switch to Router, and connect router port to server.
+5.In PC0 and PC1 command prompt ping IP address of each other and router and server.
+6.Create a file in PC0 Desktop Text Editor and save file.txt, go to command prompt and write ftp 70.0.0.2
+7.In PC1 in command prompt write get file.txt
+
+AND ITS DONEEEEEE

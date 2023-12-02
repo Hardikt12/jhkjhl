@@ -1,0 +1,36 @@
+import random
+
+def transmission(initial_frame, window_size, total_frames):
+    total_transmissions = 0
+    while initial_frame <= total_frames:
+        for k in range(initial_frame, min(initial_frame + window_size, total_frames + 1)):
+            print(f"Sending Frame {k}...")
+            total_transmissions += 1
+
+        acknowledgment_received = False
+        while not acknowledgment_received:
+            f = random.randint(0, 1)
+            if f == 1:
+                acknowledgment_received = True
+                print("-------------------------------")
+                print(f"Acknowledgment for Frame {initial_frame}.")
+                print("-------------------------------")
+            else:
+                print(f"Timeout!! Frame Number: {initial_frame} Not Received")
+                print("Retransmitting Frame!")
+                total_transmissions += 1
+
+        print()
+        initial_frame += 1
+
+    return total_transmissions
+
+def main():
+    total_frames = int(input("Enter the Total number of frames: "))
+    window_size = int(input("Enter the Window Size: "))
+    initial_frame = 1
+    total_transmissions = transmission(initial_frame, window_size, total_frames)
+    print("Total number of frames which were sent and resent are:", total_transmissions)
+
+if __name__ == "__main__":
+    main()

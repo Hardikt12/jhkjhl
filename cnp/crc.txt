@@ -1,0 +1,29 @@
+def xor_crc(data, divisor):
+    data += '0' * (len(divisor) - 1)
+    data = list(data)
+    divisor = list(divisor)
+    dividend = data[:]
+
+    for i in range(len(data) - len(divisor) + 1):
+        if dividend[i] == '1':
+            for j in range(len(divisor)):
+                dividend[i + j] = str(int(dividend[i + j]) ^ int(divisor[j]))
+
+    crc = ''.join(dividend[-(len(divisor) - 1):])
+    return crc
+
+
+def crc_check(data, divisor):
+    crc = xor_crc(data, divisor)
+    return crc == '0' * (len(divisor) - 1)
+
+data = "10011101"
+divisor = "1001"
+remainder = xor_crc(data, divisor)
+print("CRC:", remainder)
+newdata=data+remainder
+print(newdata)
+
+received_data = data + remainder
+is_valid = crc_check(received_data, divisor)
+print("Is data valid?", is_valid)

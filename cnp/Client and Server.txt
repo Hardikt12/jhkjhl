@@ -1,0 +1,63 @@
+CLIENT
+
+package cnpractical06;
+
+import java.io.*;
+import java.net.*;
+
+public class CNPractical06 {
+
+    public static void main(String[] args) throws Exception {
+        Socket s = new Socket("172.16.162.179", 8080);
+        DataInputStream din = new DataInputStream(s.getInputStream());
+        DataOutputStream dout = new DataOutputStream(s.getOutputStream());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String str = "", str2 = "";
+        while (!str.equals("stop")) {
+            System.out.print("You (Client) : ");
+            str = br.readLine();
+            dout.writeUTF(str);
+            dout.flush();
+            str2 = din.readUTF();
+            System.out.println("Server : " + str2);
+        }
+
+        dout.close();
+        s.close();
+    }
+}
+
+
+SERVER
+
+  package cn_prac5;
+ 
+import java.io.*;
+import java.net.*;
+
+public class CN_Prac5 {  
+
+    public static void main(String[] args) throws Exception{
+        ServerSocket ss = new ServerSocket(8080);
+        Socket s = ss.accept();
+       
+        DataInputStream dis = new DataInputStream(s.getInputStream());
+        DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       
+        String str="",str2="";  
+        while(!str.equals("stop")){  
+            str=dis.readUTF();  
+            System.out.println("Client : "+str);  
+            System.out.print("You(Server) : ");
+            str2=br.readLine();
+            dos.writeUTF(str2);  
+            dos.flush();  
+        }  
+        dis.close();  
+        s.close();  
+        ss.close();  
+    }
+   
+}

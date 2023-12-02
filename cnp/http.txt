@@ -1,0 +1,16 @@
+1.Add PC, PT-switch, 2 Server-PT
+
+S.NO	Device	IPv4 Address	Subnet Mask	Default Gateway	DNS
+1.	PC0	192.168.5.11	255.255.255.0	192.168.5.1	nil
+2.	server0	192.168.5.12	255.255.255.0	192.168.5.1	nil
+3.	DNS	192.168.5.13	255.255.255.0	192.168.5.1	192.168.5.13
+
+Connect PC0 to switch,switch to both servers.
+
+2.In server0 -> services -> http-> http/s on , delete all files except index.html and now edit it and write a heading.
+
+3.In DNS server -> services -> on DNS, name the server cisco.com and type address 192.168.5.12, add record
+
+4.Open PC0 -> Desktop -> Web Browser, Enter the IP address of server0 and click on GO.
+
+AND DONEEEE

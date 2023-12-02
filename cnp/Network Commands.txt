@@ -1,0 +1,9 @@
+ipconfig
+nslookup
+hostname
+ping www.google.com
+tracert www.google.com
+netstat
+arp
+systeminfo
+route print

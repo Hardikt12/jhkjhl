@@ -1,0 +1,42 @@
+def bit_stuffing(data):
+    stuffed_data = ""
+    count = 0
+
+    for bit in data:
+        if bit == '1':
+            count += 1
+        else:
+            count = 0
+
+        stuffed_data += bit
+
+        if count == 5:
+            stuffed_data += '0'
+            count = 0
+
+    return stuffed_data
+
+
+def bit_destuffing(stuffed_data):
+    destuffed_data = ""
+    count = 0
+
+    for bit in stuffed_data:
+        if bit == '1':
+            count += 1
+        else:
+          if count==5 and bit == '0':
+            continue
+          count = 0
+
+        destuffed_data += bit
+
+    return destuffed_data
+
+data = input("Enter Bit String : ")
+print("Bit String: ",data)
+stuffed_data = bit_stuffing(data)
+print("Stuffed Data:", stuffed_data)
+
+destuffed_data = bit_destuffing(stuffed_data)
+print("Destuffed Data:", destuffed_data)
